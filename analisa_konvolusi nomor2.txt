@@ -1,0 +1,12 @@
+Analisa Konvolusi Citra (Soal 2) untuk file: TranscodedWallpaper (1)
+
+1. Perbandingan Hasil Visual dan Nilai Piksel Rata-rata:
+- Citra Original (Rata-rata Piksel: 44.16): Menampilkan detail asli dari gambar.
+- Citra LPF (Rata-rata Piksel: 44.15): Secara visual, gambar terlihat lebih blur/halus karena detail kecil dihilangkan. Nilai rata-ratanya hampir sama dengan citra asli karena total bobot kernel LPF adalah 1 (9/9).
+- Citra HPF (Rata-rata Piksel: 4.46): Secara visual, gambar menjadi dominan gelap dan hanya menyisakan garis-garis tepi (edge) objek. Nilai rata-ratanya turun sangat drastis mendekati angka 0. Hal ini karena total bobot kernel HPF adalah 0 (8 - 8), sehingga area latar belakang yang warnanya sama akan dikalikan menjadi 0 (hitam).
+- Citra BPF/Sharpening (Rata-rata Piksel: 44.33): Secara visual, gambar mempertahankan warna aslinya tetapi garis dan tepian objek menjadi lebih tajam. Nilai rata-ratanya mirip dengan citra original karena total bobot kernelnya adalah 1 (5 - 4).
+
+2. Hubungan antara Domain Spasial dan Domain Frekuensi:
+- Low Pass Filter (LPF): Dalam domain spasial, LPF merata-rata piksel dengan tetangganya. Dalam domain frekuensi, filter ini meloloskan frekuensi rendah (area dengan perubahan warna lambat seperti background) dan memblokir frekuensi tinggi (detail tajam dan noise).
+- High Pass Filter (HPF): Dalam domain spasial, HPF mencari selisih besar antara piksel tengah dan tetangganya. Dalam domain frekuensi, HPF kebalikan dari LPF; meloloskan frekuensi tinggi (perubahan warna mendadak/tepi) dan memblokir frekuensi rendah (area polos jadi hitam).
+- Band Pass Filter (BPF) / Sharpening: Dalam domain spasial, filter ini adalah kombinasi dari Citra Original ditambah hasil HPF. Dalam domain frekuensi, filter ini meloloskan rentang frekuensi tertentu atau memberikan penguatan (boosting) pada frekuensi tinggi, sehingga citra tetap terlihat wujudnya namun tepinya makin tegas.
