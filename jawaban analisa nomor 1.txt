@@ -1,0 +1,11 @@
+Analisa Transformasi Citra
+
+1. Perbedaan persebaran nilai keabuan antara ketiga citra:
+- Citra Asli: Distribusi nilai piksel murni sesuai dengan kondisi pencahayaan saat foto diambil. Histogramnya menunjukkan persebaran intensitas asli gambar.
+- Citra Negatif: Histogramnya merupakan kebalikan (mirroring) dari citra asli. Nilai piksel yang tadinya berada di area gelap (mendekati 0) berpindah secara linear ke area terang (mendekati 255), begitu juga sebaliknya.
+- Citra Logaritmik: Histogram menunjukkan pergeseran non-linear. Piksel-piksel dengan intensitas rendah (gelap) "diregangkan" distribusinya sehingga detail pada area gelap menjadi lebih terlihat jelas (lebih terang), sementara piksel dengan intensitas tinggi (terang) "dimampatkan".
+
+2. Kapan transformasi logaritmik lebih bermanfaat dibanding negatif?
+Transformasi logaritmik lebih bermanfaat daripada transformasi negatif ketika kita berhadapan dengan citra yang memiliki rentang dinamis sangat luas tetapi detail pentingnya tersembunyi di area yang sangat gelap (underexposed). 
+
+Contoh penggunaan yang tepat adalah pada citra astronomi, citra medis (seperti rontgen yang terlalu gelap), atau citra spektrum Fourier. Transformasi ini mampu meningkatkan kontras pada area gelap secara efektif tanpa menghilangkan informasi pada area terang, sedangkan transformasi negatif hanya membalik warna secara merata tanpa memperbaiki visibilitas detail pada area yang gelap secara cerdas.
