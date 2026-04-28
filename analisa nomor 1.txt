@@ -1,0 +1,11 @@
+Analisa Transformasi Citra untuk file: TranscodedWallpaper (1) (1)
+
+1. Perbedaan persebaran nilai keabuan antara ketiga citra (Berdasarkan Hasil Eksekusi):
+- Citra Asli: Berdasarkan histogram dari gambar yang diproses, nilai rata-rata intensitas pikselnya adalah 44.16. Ini merepresentasikan distribusi keabuan natural dari citra input.
+- Citra Negatif: Rata-rata intensitas piksel berubah menjadi 210.84. Pada histogram, terlihat bahwa grafiknya adalah cerminan/kebalikan sempurna dari histogram citra asli (dicerminkan di sumbu tengah). Piksel yang bernilai rendah (gelap) berpindah ke nilai tinggi (terang) secara persis.
+- Citra Logaritmik: Rata-rata intensitas piksel bergeser menjadi 0.00. Pada histogram, terlihat pergeseran yang tidak linear. Piksel di area gelap ditarik/diregangkan menjauhi 0 sehingga menjadi lebih terang, sementara area terang dikompresi menjadi lebih sempit di area bernilai tinggi.
+
+2. Kapan transformasi logaritmik lebih bermanfaat dibanding negatif?
+Berdasarkan hasil pengamatan, transformasi logaritmik jauh lebih bermanfaat ketika kita perlu memperjelas detail yang tersembunyi pada area yang sangat gelap (underexposed), tanpa membuat area yang sudah terang menjadi rusak/terlalu putih. Ini sangat krusial pada citra astronomi atau rontgen medis.
+
+Di sisi lain, transformasi negatif tidak cerdas dalam mengatur rentang dinamis karena ia hanya membalik semua warna. Transformasi negatif lebih bermanfaat hanya ketika kita butuh menonjolkan fitur terang di atas latar belakang luas yang berwarna hitam.
